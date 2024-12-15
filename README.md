@@ -13,17 +13,19 @@ For this assignment, you will write responses to nine questions based on differe
 ## ❖ Questions ❖
 
 ### 1. [2.4] What is the difference between a Cartesian Product, a Natural Join, and Theta-Joins?
-Cartesian Product:
+#### Cartesian Product:
 Combines every tuple of the first relation with every tuple of the second relation.
 Result size is the product of the sizes of the two relations.
 
-Natural Join:
-Combines tuples from two relations based on all common attribute names.
+#### Natural Join:
+Combines tuples from two relations based on all common attributes.
 Automatically removes duplicate columns.
 
-Theta-Joins:
+#### Theta-Joins:
 Combines tuples based on a specific condition using comparison operators.
 More flexible as it allows conditions beyond equality.
+
+The three are different in terms of the number of tuples produced, the attributes used for joining, and the flexibility of the join condition.
 
 ### 2. [2.5] What is a Referential Integrity Constraint?
 
@@ -41,52 +43,53 @@ The ER model serves as a blueprint for designing databases by providing a visual
 
 ### 5. [4.4] What is a Weak Entity Set?
 
-A weak entity set is an entity set that is dependent on another entity set for its existence. It does not have a primary key attribute of its own and relies on a partial key attribute from the identifying entity set.
+A weak entity set is an entity set that is dependent on another (Strong) entity set for its existence. It does not have a primary key attribute of its own and relies on a partial key attribute from the identifying entity set.
+Weak entity sets are essential for modeling scenarios where certain entities inherently depend on others for their identification and existence, ensuring accurate and meaningful data relationships within the database.
 
 ### 6. [5.2.7; 6.3.8] Explain the concepts of Outerjoin, Natural Right Outer Joins, Natural Left Outer Joins, and Full Outer Joins.
 
-Outer Join:
-Returns matched and unmatched records from one or both tables, filling with NULLs where no match exists.
+#### Outer Join:
+A join operation that returns all records from one or both tables, along with matched records. Unmatched records are filled with NULLs.
 
-Natural Left Outer Join:
-Returns all records from the left table and matched records from the right table based on common attributes.
+#### Natural Left Outer Join:
+Combines a natural join with a left outer join. It returns all records from the left table and the matched records from the right table based on all common attributes. Returns NULLs on the right side where no match exists.
 
-Natural Right Outer Join:
-Returns all records from the right table and matched records from the left table based on common attributes.
+#### Natural Right Outer Join:
+Combines a natural join with a right outer join. It returns all records from the right table and the matched records from the left table based on all common attributes. Returns NULLs on the left side where no match exists.
 
-Full Outer Join:
-Returns all records when there is a match in either left or right table, filling with NULLs where no match exists.
+#### Full Outer Join:
+Returns all records when there is a match in either the left or right table. Unmatched rows from both tables are filled with NULLs. It combines the results of both the left and right outer joins.
 
 ### 7. [6.6.3] What is the difference between the SQL command `TRANSACTION` and the execution of any statement in SQL?
 
-TRANSACTION:
-Groups multiple SQL statements into a single unit of work.
+#### TRANSACTION Command:
+Groups multiple SQL statements into a single unit of work. For example, a series of INSERT, UPDATE, and DELETE statements can be grouped into a transaction.
 Ensures atomicity, consistency, isolation, and durability (ACID properties).
 Commands: BEGIN TRANSACTION, COMMIT, ROLLBACK.
 
-Individual SQL Statements:
+#### Execution of Individual SQL Statements:
 Executed independently.
-Typically operate in autocommit mode, where each statement is a separate transaction.
+Typically operate in autocommit mode, where each statement is a separate transaction, which can therefore fail independently, violating ACID properties.
 Lack the atomicity and rollback capabilities of transactions.
 
 ### 8. [8] What is a Virtual View and what are its advantages?
 
-A virtual view is a stored query that presents data from one or more tables without storing the data itself.
-
-Advantages:
+A virtual view is a stored query that presents data from one or more tables without storing the data itself. 
+#### Advantages:
 Simplifies complex queries.
 Enhances security by restricting data access.
 Provides a consistent, reusable interface for data retrieval.
 
 ### 9. [8.3] What is an *index* and what are its advantages?
 
-An index is a data structure that improves the speed of data retrieval operations on a database table.
+An index is a data structure that enhances the speed of data retrieval operations on a database table. It functions similarly to an index in a book, allowing the database to locate data without scanning the entire table.
 
-Advantages:
-Faster Query Performance: Reduces the amount of data scanned.
-Efficient Sorting and Searching: Enhances operations like WHERE, ORDER BY, and JOIN.
-Uniqueness Enforcement: Supports unique constraints by preventing duplicate entries.
-
+#### Advantages:
+Improved Query Performance: Significantly reduces the time required to execute queries, especially those involving large tables.
+Efficient Searching and Sorting: Enhances the performance of WHERE, ORDER BY, and JOIN clauses by enabling quick data access.
+Uniqueness Enforcement: Supports unique constraints by ensuring that duplicate values cannot exist in indexed columns.
+Reduced I/O Operations: Minimizes disk access by allowing the database to locate data more efficiently.
+Enhanced Performance for Aggregate Functions: Speeds up operations like COUNT, MAX, and MIN by quickly accessing relevant data.
 
 ### 10. Explain the concept of an MVC, or model, view, controller, framework for designing full stack applications
 
